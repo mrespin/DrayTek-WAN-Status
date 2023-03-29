@@ -51,6 +51,7 @@ namespace DrayTek_WAN_Status {
             else {
                 var content = File.ReadAllText(configPath);
                 Settings = JsonConvert.DeserializeObject<ApplicationSettings>(content);
+                //Console.WriteLine("Config file found! 'app.config'.");
             }
         }
 
@@ -67,9 +68,12 @@ namespace DrayTek_WAN_Status {
             Task.Factory.StartNew(() => {
                 while (true) {                       
                     try {
-                        using (Client client = new Client(options.Ip, 23, new CancellationToken())) {
+                        using (Client client = new Client(options.Ip, options.Port, new CancellationToken())) {
                             client.TryLoginAsync(options.User, options.Password, 5000).Wait();
                             client.WriteLine("show status");
+
+                            Thread.Sleep(100);  // wait a 100ms
+                            client.WriteLine(" ");  // needs spacebar as it wait to scroll
                             var outputRequest = client.TerminatedReadAsync(">", TimeSpan.FromMilliseconds(1000));
                             outputRequest.Wait();
 
@@ -141,13 +145,17 @@ namespace DrayTek_WAN_Status {
         }
 
         static void ParseContent(string content, int linePosition = 0) {
-            linePosition +=4;
+            linePosition +=8;
             var wan = WanStatus.Parse(content);
 
             Console.WriteLine($"WAN Connected: {wan.IsConnected}");
             Console.WriteLine($"Download:      {wan.DownSpeed} {wan.SpeedUnit}");
             Console.WriteLine($"Upload:        {wan.UpSpeed} {wan.SpeedUnit}");
             Console.WriteLine($"Timestamp:     {wan.Timestamp.TimeOfDay}");
+            Console.WriteLine($"Corrected Blocks:   {wan.CorrectedBlocks}");
+            Console.WriteLine($"Unorrected Blocks:  {wan.UncorrectedBlocks}");
+            Console.WriteLine($"SNR Margin:         {wan.SnrMargin}");
+            Console.WriteLine($"Loop Att:           {wan.LoopAtt}");
 
             // Console.CursorTop is always 0 in docker
             int top = (Console.CursorTop - linePosition) >= 0 ? Console.CursorTop - linePosition : 0;

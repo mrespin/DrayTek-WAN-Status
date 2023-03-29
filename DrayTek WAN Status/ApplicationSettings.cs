@@ -9,19 +9,22 @@ namespace DrayTek_WAN_Status {
 
         public ApplicationSettings() {
             DisableConsoleOutput = false;
-            OutputRawData = false;        
+            OutputRawData = true;
 
             QueryOptions = new QueryOptions {
-                Option = QueryOption.UDP,
-                Udp = new UdpOptions {
+                Option = QueryOption.Telnet,
+                Udp = new UdpOptions
+                {
                     ListeningPort = 51400,
-                    Ip = "192.168.0.1"
+                    Ip = "10.11.200.1"
                 },
-                Telnet = new TelnetOptions {
-                    Ip = "192.168.0.1",
+                Telnet = new TelnetOptions
+                {
+                    Ip = "10.0.200.1",
                     User = "admin",
-                    Password = "password",
-                    QueryIntervalSeconds = 30
+                    Password = "pass",
+                    QueryIntervalSeconds = 30,
+                    Port = 23
                 }
             };
 
@@ -57,12 +60,13 @@ namespace DrayTek_WAN_Status {
         public string User { get; set; }
         public string Password { get; set; }
         public int QueryIntervalSeconds { get; set; }
-        public string Ip { get; internal set; }
-    }
+        public string Ip { get; set; }
+        public int Port { get; set; }
+}
 
-    public class UdpOptions {                          
-        public int ListeningPort { get; internal set; }
-        public string Ip { get; internal set; }
+public class UdpOptions {                          
+        public int ListeningPort { get; set; }
+        public string Ip { get; set; }
     }
 
     public class QueryOptions {
