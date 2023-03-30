@@ -3,7 +3,7 @@ The app collects the WAN status message that is send via UDP from a [DrayTek mod
 This fork has been updated orginal https://github.com/jwillmer/DrayTek-WAN-Status:
 updated dodtnet sources
 fix location of app.config /app/config
-fix Ip, etc to be read from app.config
+fix Ip, etc to be read correctly from app.config
 added Port paraemter for router Telnet Port
 added support for (un)corrected blocks and line parameters (SNR Margin, Line Att.)
 
