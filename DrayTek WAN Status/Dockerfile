@@ -1,4 +1,5 @@
-FROM microsoft/dotnet:2.0-sdk AS build-env
+# https://github.com/dotnet/announcements/issues/197
+FROM mcr.microsoft.com/dotnet/sdk:2.1 AS build-env
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -10,7 +11,7 @@ COPY . ./
 RUN dotnet publish -c Release -o out
 
 # build runtime image
-FROM microsoft/dotnet:2.1-runtime
+FROM mcr.microsoft.com/dotnet/runtime:2.1
 WORKDIR /app
 COPY --from=build-env /app/out ./
 ENTRYPOINT ["dotnet", "DrayTek WAN Status.dll"]
