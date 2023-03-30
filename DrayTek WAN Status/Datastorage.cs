@@ -43,7 +43,7 @@ namespace DrayTek_WAN_Status {
             }
 
             var delimiter = Program.Settings.StorageProvider.Csv.Delimiter;
-            var header = $"Date{delimiter} Time{delimiter} Is Connected{delimiter} Upload Speed ({wan.SpeedUnit}){delimiter} Download Speed ({wan.SpeedUnit}){delimiter} Corrected Blocks{delimiter} Uncorrected Blocks {delimiter} SNR {delimiter} Loop Att.";
+            var header = $"Date{delimiter} Time{delimiter} Is Connected{delimiter} Upload Speed ({wan.SpeedUnit}){delimiter} Download Speed ({wan.SpeedUnit}){delimiter} Corrected Blocks{delimiter} Uncorrected Blocks {delimiter} SNR Margin {delimiter} Loop Att.";
             var content = $"{wan.Timestamp.Date.ToString("yyyy-MM-dd")}{delimiter} {wan.Timestamp.TimeOfDay}{delimiter} {wan.IsConnected}{delimiter} {wan.UpSpeed}{delimiter} {wan.DownSpeed}{delimiter} {wan.CorrectedBlocks}{delimiter} {wan.UncorrectedBlocks}{delimiter} {wan.SnrMargin}{delimiter} {wan.LoopAtt}";
             WriteToDisk(LogPath, content, header);
         }
