@@ -16,7 +16,7 @@ namespace DrayTek_WAN_Status {
                 Udp = new UdpOptions
                 {
                     ListeningPort = 51400,
-                    Ip = "10.11.200.1"
+                    Ip = "10.0.200.1"
                 },
                 Telnet = new TelnetOptions
                 {

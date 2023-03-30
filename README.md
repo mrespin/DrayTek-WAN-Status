@@ -12,9 +12,9 @@ The app collects the WAN status message that is send via UDP from a [DrayTek mod
 docker create \
 	--name draytek-log \
 	-p 514:51400 \
-	-v </path/to/appdata>:/config \
-	-v <path/to/logfiles>:/data \
-  jwillmer/draytek-wan-status:latest
+	-v </path/to/appdata>:/app/config \
+	-v <path/to/logfiles>:/app/data \
+  mrespin/draytekwanstatus:latest
 ```
 
 
@@ -25,11 +25,11 @@ version: "2"
 services:
 
   draytek_log:
-    image: jwillmer/draytek-wan-status:latest
+    image: mrespin/draytekwanstatus:latest
     container_name: "draytek_log"
     volumes:
-      - </path/to/logfiles>:/config
-      - <path/to/appdata>:/data
+      - </path/to/logfiles>:/app/config
+      - <path/to/appdata>:/app/data
     ports:
       - "514:51400/udp"
     restart: always
@@ -52,7 +52,9 @@ On the first start the app will create a configuration file (`app.config`) and t
       // The listening UDP port - do not change this if you run the app inside docker, just map your port to this one.
       "ListeningPort": 51400,
       // IP of your router, to validate that the package is from your router
-      "Ip": "192.168.0.1"
+      "Ip": "192.168.0.1",
+	  // Port of your router Telnet
+	  "Port": 23
     },
     "Telnet": {
       // Username of your outer
@@ -90,7 +92,5 @@ On the first start the app will create a configuration file (`app.config`) and t
 
 ## Output
 
-![](https://github.com/jwillmer/DrayTek-WAN-Status/raw/master/media/output-consol.png)
 ![](https://github.com/mrespin/DrayTek-WAN-Status/raw/master/media/output-consol.png)
-![](https://github.com/jwillmer/DrayTek-WAN-Status/raw/master/media/output-csv.png)
 ![](https://github.com/mrespin/DrayTek-WAN-Status/raw/master/media/output-csv.png)
