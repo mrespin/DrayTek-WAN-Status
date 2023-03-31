@@ -16,11 +16,11 @@ namespace DrayTek_WAN_Status {
                 Udp = new UdpOptions
                 {
                     ListeningPort = 51400,
-                    Ip = "10.0.200.1"
+                    Ip = "10.0.0.1"
                 },
                 Telnet = new TelnetOptions
                 {
-                    Ip = "10.0.200.1",
+                    Ip = "10.0.0.1",
                     User = "admin",
                     Password = "pass",
                     QueryIntervalSeconds = 30,
@@ -32,7 +32,7 @@ namespace DrayTek_WAN_Status {
                 StorageProviderOption = StorageProviderOption.CSV,
                 InfluxDb = new InfluxDbSettings {
                     Version = CustomInfluxDbVersion.Latest,
-                    Url = "http://192.168.0.5:8086",
+                    Url = "http://10.0.0.5:8086",
                     User = "username",
                     Password = "password",
                     DatabaseName = "database"

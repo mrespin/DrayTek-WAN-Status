@@ -108,12 +108,10 @@ namespace DrayTek_WAN_Status {
         private decimal? _downSpeed = null;
         private decimal? _upSpeed = null;
 
-        private decimal? _correctedBlocks = null;  //Corrected Blocks:
-        private decimal? _uncorrectedBlocks = null;  //Uncorrected Blocks:
-        private decimal? _snrMargin = null;  //SNR Margin:
-        private decimal? _loopAtt = null;  //Loop Att.:
-
-
+        private decimal? _correctedBlocks = null;  // Corrected Blocks:
+        private decimal? _uncorrectedBlocks = null;  // Uncorrected Blocks:
+        private decimal? _snrMargin = null;  // SNR Margin:
+        private decimal? _loopAtt = null;  // Loop Att.:
         private string _rawContent;
 
         // UDP Data:
