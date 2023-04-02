@@ -7,11 +7,11 @@
     <Authors>Jens Willmer; enhancments: Jac Mika</Authors>
     <Description>The app collects the WAN status message that is send via UDP or Telent from a DrayTek modem to your machine.</Description>
     <AssemblyVersion>1.1.*</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
 	<Deterministic>false</Deterministic>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <ApplicationIcon>MONITR01.ICO</ApplicationIcon>
     <Win32Resource />
-    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

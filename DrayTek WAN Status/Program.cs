@@ -17,7 +17,7 @@ namespace DrayTek_WAN_Status {
         public static Datastorage _storage;
 
         static void Main(string[] args) {
-            Console.WriteLine($"DrayTek WAN Status (V.{Assembly.GetEntryAssembly().GetName().Version})");
+            Console.WriteLine($"DrayTek WAN Status (V.{Assembly.GetEntryAssembly().GetName().Version}) @ {DateTime.Now}");
             Console.WriteLine();
 
             InitConfiguration();

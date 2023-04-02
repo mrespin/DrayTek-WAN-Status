@@ -56,16 +56,21 @@ namespace DrayTek_WAN_Status {
         }
 
         void WriteToDisk(string path, string content, string header = null) {
-            if (!File.Exists(path)) {
-                if (header != null) {
+            if (!File.Exists(path))
+            {
+                if (header != null)
+                {
                     File.WriteAllText(path, header + Environment.NewLine);
                 }
-                else {
+                else
+                {
                     File.Create(path);
                 }
-            } else
-
-            File.AppendAllText(path, content + Environment.NewLine);
+            }
+            else
+            {
+                File.AppendAllText(path, content + Environment.NewLine);
+            }
         }
 
         #endregion
