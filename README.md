@@ -1,5 +1,5 @@
 # DrayTek-WAN-Status 1.1
-The app collects the WAN status message that is send via UDP from a [DrayTek modem](https://www.draytek.com/en//products/products-a-z/router.all/vigor130) to your machine and stores it as CSV file or send it to [InfluxDB](https://www.influxdata.com/).
+The app collects the WAN status message that is send via UDP or Telnet from a [DrayTek modem](https://www.draytek.com/en//products/products-a-z/router.all/vigor130) to your machine and stores it as CSV file or send it to [InfluxDB](https://www.influxdata.com/).
 This fork is based on orginal https://github.com/jwillmer/DrayTek-WAN-Status:
 - updated dotnet sources (Docker support)
 - fix location of app.config (/app/config)
